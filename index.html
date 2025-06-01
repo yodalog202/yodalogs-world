@@ -131,7 +131,9 @@
   <br><br>
   <button id="loadYoutube">▶️ Play YouTube</button>
   <br><br>
+<div id="ytContainer" style="display: none; text-align: center;">
   <iframe id="yt-iframe" width="360" height="215" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
   <p id="ytError" style="color: red; display: none;">❌ This video can't be embedded. Try a different one.</p>
 </div>
 
@@ -348,6 +350,7 @@ document.getElementById("loadYoutube").addEventListener("click", function () {
   if (match && match[1]) {
     const iframe = document.getElementById("yt-iframe");
     iframe.src = `https://www.youtube.com/embed/${match[1]}?autoplay=1&mute=1`;
+    document.getElementById("ytContainer").style.display = "block";
 iframe.onerror = () => document.getElementById("ytError").style.display = "block";
 iframe.onload = () => document.getElementById("ytError").style.display = "none";
   } else {
